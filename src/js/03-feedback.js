@@ -5,7 +5,7 @@ const inputEl = document.querySelector('.feedback-form input')
 const textareaEl = document.querySelector('.feedback-form textarea')
 
 const STORAGE_KEY = 'feedback-form-state'
-const formData = {}
+let formData = { }
 
  formEl.addEventListener('submit', onFormSubmit)
  formEl.addEventListener('input', throttle(onFormInput, 500))
@@ -26,27 +26,32 @@ function onFormSubmit(e) {
     
     e.target.reset()
     localStorage.removeItem(STORAGE_KEY)
+   
     
 }
 
 
 function onFormInput(e) {
+    //  formData.email = ''
+    // formData.message = ''
  formData[e.target.name] = e.target.value
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
-  
+    // console.log(formData);
+    
+    
 }
 
 function populateFields() {
     const savedData = localStorage.getItem(STORAGE_KEY)
-    const parsData = JSON.parse(savedData) 
+    const parsData = JSON.parse(savedData)
     if (savedData) {
-        inputEl.value = parsData.email || '' 
+        inputEl.value = parsData.email || ''
         textareaEl.value = parsData.message || ''
-        
     }
-    
-    
+    formData.email = inputEl.value
+    formData.message = textareaEl.value
 }
+
 
 
 
