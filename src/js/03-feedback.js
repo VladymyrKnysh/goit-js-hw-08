@@ -19,8 +19,6 @@ function onFormSubmit(e) {
         alert('Усі поля повинні буди заповнені')
     } 
     
-    formData.email = inputEl.value
-    formData.message = textareaEl.value
     console.log( formData)
     
     
@@ -32,12 +30,11 @@ function onFormSubmit(e) {
 
 
 function onFormInput(e) {
-    //  formData.email = ''
-    // formData.message = ''
+   
  formData[e.target.name] = e.target.value
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
     // console.log(formData);
-    
+ 
     
 }
 
@@ -50,6 +47,7 @@ function populateFields() {
     }
     formData.email = inputEl.value
     formData.message = textareaEl.value
+
 }
 
 
