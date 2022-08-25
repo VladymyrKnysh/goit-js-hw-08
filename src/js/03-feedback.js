@@ -24,7 +24,7 @@ function onFormSubmit(e) {
     
     e.target.reset()
     localStorage.removeItem(STORAGE_KEY)
-   
+   formData = {}
     
 }
 
